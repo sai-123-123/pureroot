@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest: #234c2d;
+  --cream: #f8f5ec;
+  --ink: #242424;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input { font: inherit; }
+
+.container-wide {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-grid {
+  background:
+    radial-gradient(circle at 72% 45%, rgba(35,76,45,.08), transparent 30%),
+    linear-gradient(110deg, #fff 0%, #fbfaf5 55%, #f2f0e6 100%);
+}
+
+.product-card {
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(35,76,45,.10);
+}
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { scrollbar-width: none; }
+
+@media (max-width: 768px) {
+  .container-wide { width: min(100% - 24px, 1180px); }
+}
