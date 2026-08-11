@@ -7,7 +7,6 @@ export default function IntroAnimation() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Show only once per browser session
     const alreadyShown = sessionStorage.getItem(
       "godavari-intro-shown"
     );
@@ -17,8 +16,10 @@ export default function IntroAnimation() {
       return;
     }
 
+    // Start animation
     setShow(true);
 
+    // Keep intro visible for 2.4 seconds
     const hideTimer = setTimeout(() => {
       setShow(false);
 
@@ -27,10 +28,13 @@ export default function IntroAnimation() {
         "true"
       );
 
-      setTimeout(() => {
+      // Wait for fade-out to finish
+      const removeTimer = setTimeout(() => {
         setVisible(false);
-      }, 500);
-    }, 1200);
+      }, 700);
+
+      return () => clearTimeout(removeTimer);
+    }, 2400);
 
     return () => clearTimeout(hideTimer);
   }, []);
@@ -40,17 +44,19 @@ export default function IntroAnimation() {
   return (
     <div
       className={`
-        fixed inset-0 z-[9999]
+        fixed inset-0 z-[99999]
         flex items-center justify-center
         bg-[#f8f6ef]
-        transition-opacity duration-500
+        transition-opacity duration-700
         ${show ? "opacity-100" : "opacity-0"}
       `}
     >
       <div
         className={`
-          flex flex-col items-center px-6 text-center
-          transition-all duration-700
+          flex flex-col items-center
+          px-6 text-center
+          transition-all duration-1000
+          ease-out
           ${
             show
               ? "translate-y-0 scale-100 opacity-100"
@@ -65,9 +71,9 @@ export default function IntroAnimation() {
           alt="Godavari Basket"
           className="
             w-[280px]
+            object-contain
             sm:w-[380px]
             md:w-[460px]
-            object-contain
           "
         />
 
@@ -75,7 +81,7 @@ export default function IntroAnimation() {
 
         <p
           className="
-            mt-3
+            mt-4
             text-[10px]
             font-medium
             uppercase
@@ -87,18 +93,24 @@ export default function IntroAnimation() {
           Authentic Goodness From Godavari
         </p>
 
-        {/* SMALL DIVIDER */}
+        {/* DIVIDER */}
 
-        <div className="mt-5 flex items-center gap-3">
+        <div
+          className="
+            mt-6
+            flex
+            items-center
+            gap-3
+            text-[#264e36]
+          "
+        >
+          <span className="h-px w-10 bg-[#8b5e34]/40" />
 
-          <span className="h-px w-10 bg-[#8b5e34]/50" />
-
-          <span className="text-[#264e36]">
+          <span className="text-sm">
             ✦
           </span>
 
-          <span className="h-px w-10 bg-[#8b5e34]/50" />
-
+          <span className="h-px w-10 bg-[#8b5e34]/40" />
         </div>
 
       </div>
