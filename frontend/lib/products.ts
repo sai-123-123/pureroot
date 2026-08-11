@@ -15,7 +15,7 @@ export type Product = {
   benefits?: string;
 };
 
-const API_URL = "https://pureroot-ects.vercel.app/";
+const API_URL = "https://pureroot-ects.vercel.app";
 
 export async function getProducts(): Promise<Product[]> {
   const response = await fetch(`${API_URL}/api/products`, {
