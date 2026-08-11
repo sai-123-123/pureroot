@@ -45,9 +45,9 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
             <div className="flex items-center gap-2">
               <Leaf size={22} className="text-forest" />
               <div>
-                <div className="serif text-3xl">PureRoot</div>
+                <div className="serif text-3xl">Godavari Basket</div>
                 <div className="text-[9px] tracking-[.28em] text-gray-500">
-                  ROOTED IN TRADITION
+                  Authentic Goodness From Godavari
                 </div>
               </div>
             </div>
