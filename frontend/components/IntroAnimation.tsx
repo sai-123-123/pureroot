@@ -3,30 +3,29 @@
 import { useEffect, useState } from "react";
 
 export default function IntroAnimation() {
-  const [visible, setVisible] = useState(true);
   const [stage, setStage] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Start
+    // 0–2 seconds: logo
     const logoTimer = setTimeout(() => {
       setStage(1);
-    }, 500);
+    }, 2000);
 
-    // Show tagline
+    // 2–4 seconds: tagline
     const taglineTimer = setTimeout(() => {
       setStage(2);
-    }, 1300);
+    }, 4000);
 
-    // Start exit
+    // 4–6 seconds: hold everything
     const exitTimer = setTimeout(() => {
       setStage(3);
-    }, 3000);
+    }, 5300);
 
-    // Remove completely
+    // 6 seconds: remove intro
     const removeTimer = setTimeout(() => {
       setVisible(false);
-      sessionStorage.setItem("godavari-intro-shown", "true");
-    }, 3900);
+    }, 6000);
 
     return () => {
       clearTimeout(logoTimer);
@@ -44,7 +43,7 @@ export default function IntroAnimation() {
         fixed inset-0 z-[99999]
         flex items-center justify-center
         bg-[#f8f6ef]
-        transition-opacity duration-[900ms] ease-in-out
+        transition-opacity duration-700 ease-in-out
         ${stage === 3 ? "opacity-0" : "opacity-100"}
       `}
     >
@@ -54,11 +53,11 @@ export default function IntroAnimation() {
 
         <div
           className={`
-            transition-all duration-[1200ms] ease-out
+            transition-all duration-1000 ease-out
             ${
-              stage >= 1
+              stage >= 0
                 ? "translate-y-0 scale-100 opacity-100"
-                : "translate-y-5 scale-90 opacity-0"
+                : "translate-y-4 scale-95 opacity-0"
             }
           `}
         >
@@ -68,8 +67,8 @@ export default function IntroAnimation() {
             className="
               w-[280px]
               object-contain
-              sm:w-[360px]
-              md:w-[440px]
+              sm:w-[380px]
+              md:w-[460px]
             "
           />
         </div>
@@ -78,11 +77,11 @@ export default function IntroAnimation() {
 
         <div
           className={`
-            transition-all duration-[1000ms] ease-out
+            transition-all duration-1000 ease-out
             ${
-              stage >= 2
+              stage >= 1
                 ? "translate-y-0 opacity-100"
-                : "translate-y-3 opacity-0"
+                : "translate-y-4 opacity-0"
             }
           `}
         >
@@ -99,8 +98,6 @@ export default function IntroAnimation() {
           >
             Authentic Goodness From Godavari
           </p>
-
-          {/* DIVIDER */}
 
           <div className="mt-6 flex items-center justify-center gap-3">
 
