@@ -1,5 +1,5 @@
 'use client';
-import IntroAnimation from "@/components/IntroAnimation";
+import IntroAnimation from "../components/IntroAnimation";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
