@@ -25,13 +25,11 @@ export default function ProductCard({
 
   return (
     <>
-      {/* PRODUCT CARD */}
-
       <article
         onClick={() => setShowDetails(true)}
         className="product-card cursor-pointer overflow-hidden rounded-2xl border bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
       >
-        <div className="relative flex h-48 items-center justify-center sm:h-60 bg-[#f8f6ef] p-6">
+        <div className="relative flex h-48 items-center justify-center bg-[#f8f6ef] p-6 sm:h-60">
 
           {product.badge && (
             <span className="absolute left-3 top-3 rounded-md bg-forest px-2.5 py-1 text-xs font-semibold text-white">
@@ -44,6 +42,7 @@ export default function ProductCard({
               event.stopPropagation();
             }}
             className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm transition hover:scale-110"
+            aria-label="Add to wishlist"
           >
             <Heart size={17} />
           </button>
@@ -90,7 +89,7 @@ export default function ProductCard({
                 event.stopPropagation();
                 onAdd(product);
               }}
-              className="flex items-center gap-2 rounded-xl bg-sage px-3 py-2 sm:px-4 sm:py-2.5 text-sm font-semibold text-forest transition hover:bg-forest hover:text-white"
+              className="flex items-center gap-2 rounded-xl bg-sage px-3 py-2 text-sm font-semibold text-forest transition hover:bg-forest hover:text-white sm:px-4 sm:py-2.5"
             >
               <ShoppingCart size={16} />
               Add to Cart
@@ -100,8 +99,6 @@ export default function ProductCard({
 
         </div>
       </article>
-
-      {/* QUICK VIEW MODAL */}
 
       {showDetails && (
         <div
@@ -114,18 +111,15 @@ export default function ProductCard({
             className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl bg-white shadow-2xl"
           >
 
-            {/* CLOSE */}
-
             <button
               onClick={() => setShowDetails(false)}
               className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full bg-white shadow-md transition hover:scale-110"
+              aria-label="Close product details"
             >
               <X size={20} />
             </button>
 
             <div className="grid md:grid-cols-2">
-
-              {/* IMAGE */}
 
               <div className="flex min-h-[380px] items-center justify-center bg-[#f8f6ef] p-10">
 
@@ -136,8 +130,6 @@ export default function ProductCard({
                 />
 
               </div>
-
-              {/* DETAILS */}
 
               <div className="flex flex-col justify-center p-7 md:p-10">
 
@@ -200,7 +192,7 @@ export default function ProductCard({
                 {product.benefits && (
                   <div className="mt-4">
                     <h3 className="font-semibold">
-                      Benefits
+                      Why You'll Love It
                     </h3>
 
                     <p className="mt-1 text-sm leading-6 text-gray-500">
@@ -208,8 +200,6 @@ export default function ProductCard({
                     </p>
                   </div>
                 )}
-
-                {/* QUANTITY */}
 
                 <div className="mt-6">
 
@@ -225,6 +215,7 @@ export default function ProductCard({
                           Math.max(1, current - 1)
                         )
                       }
+                      aria-label="Decrease quantity"
                     >
                       <Minus size={17} />
                     </button>
@@ -237,6 +228,7 @@ export default function ProductCard({
                       onClick={() =>
                         setQuantity((current) => current + 1)
                       }
+                      aria-label="Increase quantity"
                     >
                       <Plus size={17} />
                     </button>
@@ -244,8 +236,6 @@ export default function ProductCard({
                   </div>
 
                 </div>
-
-                {/* ADD TO CART */}
 
                 <button
                   onClick={addToCart}
