@@ -44,6 +44,13 @@ export default function ProductGrid({
     );
   }, [category, products]);
 
+  const categoryLabels: Record<"All" | Category, string> = {
+    All: "All Products",
+    Ghee: "Ghee",
+    Karam: "Karam & Podis",
+    Essentials: "Everyday Essentials",
+  };
+
   return (
     <section id="shop" className="container-wide py-10">
 
@@ -51,11 +58,11 @@ export default function ProductGrid({
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-[.2em] text-forest">
-            Fresh from our collection
+            Made for everyday living
           </p>
 
           <h2 className="serif mt-2 text-4xl">
-            Shop Essentials
+            Discover PureRoot
           </h2>
         </div>
 
@@ -74,7 +81,7 @@ export default function ProductGrid({
                   : "bg-white hover:border-forest"
               }`}
             >
-              {c}
+              {categoryLabels[c]}
             </button>
 
           ))}
@@ -83,15 +90,11 @@ export default function ProductGrid({
 
       </div>
 
-      {/* Loading */}
-
       {loading && (
         <div className="py-20 text-center text-gray-500">
-          Loading products...
+          Bringing our collection to you...
         </div>
       )}
-
-      {/* Products */}
 
       {!loading && (
         <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
@@ -107,11 +110,9 @@ export default function ProductGrid({
         </div>
       )}
 
-      {/* No products */}
-
       {!loading && visible.length === 0 && (
         <div className="py-20 text-center text-gray-500">
-          No products found.
+          No products available in this collection.
         </div>
       )}
 
