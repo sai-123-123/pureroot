@@ -42,21 +42,59 @@ export default function Home() {
   const count = cart.reduce((n, i) => n + i.quantity, 0);
 
   return (
-    <>
-      <Header cartCount={count} onCart={() => setCartOpen(true)} />
-      <main>
-        <Hero />
-        <CategorySection />
-        <ProductGrid onAdd={addToCart} />
-        <section className="container-wide mt-8 grid gap-3 rounded-2xl bg-sage p-5 text-sm md:grid-cols-4">
-          <div>🚚 <b>Free Shipping</b><br /><span className="text-gray-600">On orders above ₹999</span></div>
-          <div>📦 <b>Secure Packaging</b><br /><span className="text-gray-600">Safe & hygienic</span></div>
-          <div>🌿 <b>Delivered Fresh</b><br /><span className="text-gray-600">Packed with care</span></div>
-          <div>💚 <b>100% Satisfaction</b><br /><span className="text-gray-600">We care for you</span></div>
-        </section>
-      </main>
-      <Footer />
-      <CartDrawer open={cartOpen} items={cart} onClose={() => setCartOpen(false)} onChange={changeQuantity} />
-    </>
-  );
+  <>
+    <IntroAnimation />
+
+    <Header cartCount={count} onCart={() => setCartOpen(true)} />
+
+    <main>
+      <Hero />
+      <CategorySection />
+      <ProductGrid onAdd={addToCart} />
+
+      <section className="container-wide mt-8 grid gap-3 rounded-2xl bg-sage p-5 text-sm md:grid-cols-4">
+        <div>
+          🚚 <b>Free Shipping</b>
+          <br />
+          <span className="text-gray-600">
+            On orders above ₹999
+          </span>
+        </div>
+
+        <div>
+          📦 <b>Secure Packaging</b>
+          <br />
+          <span className="text-gray-600">
+            Safe & hygienic
+          </span>
+        </div>
+
+        <div>
+          🌿 <b>Delivered Fresh</b>
+          <br />
+          <span className="text-gray-600">
+            Packed with care
+          </span>
+        </div>
+
+        <div>
+          💚 <b>100% Satisfaction</b>
+          <br />
+          <span className="text-gray-600">
+            We care for you
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <CartDrawer
+      open={cartOpen}
+      items={cart}
+      onClose={() => setCartOpen(false)}
+      onChange={changeQuantity}
+    />
+  </>
+);
 }
