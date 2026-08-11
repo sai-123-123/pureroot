@@ -12,14 +12,12 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
 
     if (!query) return;
 
-    // Send search term to the shop section
     window.dispatchEvent(
       new CustomEvent("product-search", {
         detail: query,
       })
     );
 
-    // Scroll to shop
     document.getElementById("shop")?.scrollIntoView({
       behavior: "smooth",
     });
@@ -35,7 +33,7 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
     <>
       <div className="bg-forest text-white text-xs">
         <div className="container-wide flex items-center justify-between py-2">
-          <span>🌿 100% Natural &nbsp; | &nbsp; Traditional &nbsp; | &nbsp; No Preservatives</span>
+          <span>🌿 Rooted in Tradition &nbsp; | &nbsp; Carefully Sourced &nbsp; | &nbsp; Made with Care</span>
           <span className="hidden sm:block">🚚 Free shipping on orders above ₹999</span>
           <span className="hidden md:block">🇮🇳 Delivering across India</span>
         </div>
@@ -49,7 +47,7 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
               <div>
                 <div className="serif text-3xl">PureRoot</div>
                 <div className="text-[9px] tracking-[.28em] text-gray-500">
-                  PURE BY NATURE
+                  ROOTED IN TRADITION
                 </div>
               </div>
             </div>
@@ -58,21 +56,20 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
           <nav className="hidden lg:flex items-center gap-8 text-sm">
             <a className="font-semibold text-forest" href="#">Home</a>
             <a href="#shop" className="hover:text-forest">Shop</a>
-            <a href="#about" className="hover:text-forest">About Us</a>
+            <a href="#about" className="hover:text-forest">Our Story</a>
             <a href="#why" className="hover:text-forest">Why PureRoot</a>
             <a href="#contact" className="hover:text-forest">Contact</a>
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
 
-            {/* SEARCH */}
             <div className="flex h-11 w-64 items-center rounded-full border px-4">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={handleSearchKeyDown}
                 className="w-full bg-transparent text-sm outline-none"
-                placeholder="Search products..."
+                placeholder="Search our collection..."
               />
 
               <button
@@ -114,7 +111,7 @@ export default function Header({ cartCount, onCart }: { cartCount: number; onCar
             <div className="flex flex-col gap-4 text-sm">
               <a href="#" onClick={() => setOpen(false)}>Home</a>
               <a href="#shop" onClick={() => setOpen(false)}>Shop</a>
-              <a href="#about" onClick={() => setOpen(false)}>About Us</a>
+              <a href="#about" onClick={() => setOpen(false)}>Our Story</a>
               <a href="#why" onClick={() => setOpen(false)}>Why PureRoot</a>
               <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
             </div>
